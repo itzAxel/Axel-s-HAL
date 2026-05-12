@@ -23,8 +23,9 @@ void UART1_Receive_DMA(uint8_t *buffer, uint32_t size) {
     LL_DMA_SetPeriphAddress(DMA2, LL_DMA_STREAM_2, LL_USART_DMA_GetRegAddr(USART1));
     LL_DMA_SetDataLength(DMA2, LL_DMA_STREAM_2, size);
 
-    LL_DMA_EnableIT_TC(DMA2, LL_DMA_STREAM_2);
-    LL_DMA_EnableIT_HT(DMA2, LL_DMA_STREAM_2);
+    // Uncomment these lines if STM32CubeMX did not handle DMA
+    // LL_DMA_EnableIT_TC(DMA2, LL_DMA_STREAM_2);
+    // LL_DMA_EnableIT_HT(DMA2, LL_DMA_STREAM_2);
 
     LL_DMA_EnableStream(DMA2, LL_DMA_STREAM_2);
     LL_USART_EnableDMAReq_RX(USART1);
@@ -40,8 +41,9 @@ void UART1_Transmit_DMA(uint8_t *buffer, uint16_t size) {
     LL_DMA_SetPeriphAddress(DMA2, LL_DMA_STREAM_7, LL_USART_DMA_GetRegAddr(USART1));
     LL_DMA_SetDataLength(DMA2, LL_DMA_STREAM_7, size);
 
-    LL_DMA_EnableIT_TC(DMA2, LL_DMA_STREAM_7);
-    LL_DMA_EnableIT_HT(DMA2, LL_DMA_STREAM_7);
+    // Uncomment these lines if STM32CubeMX did not handle DMA
+    // LL_DMA_EnableIT_TC(DMA2, LL_DMA_STREAM_7);
+    // LL_DMA_EnableIT_HT(DMA2, LL_DMA_STREAM_7);
 
     LL_DMA_EnableStream(DMA2, LL_DMA_STREAM_7);
     LL_USART_EnableDMAReq_TX(USART1);
